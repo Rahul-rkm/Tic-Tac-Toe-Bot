@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="./script.js"></script>
+    <title>TIC TAC TOE BOT</title>
+</head>
+<body class="light">
+    <!-- 
+        create a scorebar 
+        create a grid containing the board (board-grid)
+        set the initial board data to a null array (we store the data of board in array)
+        create a modal representing processing by the cpu AI to move its next move
+        change the data inside modal if the player or cpu wins or game draws use modal by hiding and unhiding it
+
+
+    -->
+    <div id="score-bar">
+        <div class="score-bar-items" id="player-score">Player's score : </div>
+        <div class="score-bar-items" id="bot-score">Bot's score</div>
+        <div class="score-bar-items" id="theme">Theme
+            <ul class="score-bar-items" id="theme-dropdown"> 
+                <li class="dropdown-items" id="light">Light</li>
+                <li class="dropdown-items" id="dark">Dark</li>
+            </ul>
+        </div>
+    </div>
+    <div id="turn">Player's turn</div>
+    <div id="board-grid">
+        <button class="board-grid-items" id="board-item-1">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-2">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-3">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-4">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-5">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-6">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-7">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-8">&nbsp;</button>
+        <button class="board-grid-items" id="board-item-9">&nbsp;</button>   
+    </div>
+    <div id="modal">
+        <div id="modal-msg">
+            <h2>Welcome to TIC TAC TOE </h2>
+        </div>
+        <button id="modal-action">Start</button>
+    </div>
+    <div id="overlay"></div>
+</body>
+</html>
