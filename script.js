@@ -1,6 +1,4 @@
 
-
-
 // 1. select all elements 
 
 const playerScoreEl = document.querySelector("#player-score"); // "Player's score: "

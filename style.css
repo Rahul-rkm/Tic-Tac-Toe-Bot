@@ -92,31 +92,6 @@
 .board-grid-items:hover {
     background-color: rgba(24, 24, 24, 0.728);
 }
-/* 
-.board-grid-items:hover::before
-{
-    background-color: rgb(215, 215, 215);
-    content: '';
-    position: absolute;
-    width: calc(var(--mark-size) * .15);
-    height: var(--mark-size);
-    transform: rotate(-45deg);
-}
-.board-grid-items:hover::after
-{
-    background-color: rgb(215, 215, 215);
-    content: '';
-    position: absolute;
-    width: calc(var(--mark-size) * .15);
-    height: var(--mark-size);
-    transform: rotate(45deg);
-}
-
-.board-grid-items.x:hover,
-.board-grid-items.o:hover {
-    cursor: not-allowed;
-    background-color: rgba(24, 24, 24, 0.454);
-} */
 
 /* modal */
 #modal {

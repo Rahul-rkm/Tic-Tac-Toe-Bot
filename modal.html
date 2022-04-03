@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        #modal {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            transition: all 1.9s;
+            z-index: 10;
+            padding: 0.5rem;
+            background-color: #fff;
+        }
+
+        #modal.active{
+            transform: translate(-50%,-50%) scale(1);
+        }
+
+        #modal-title{
+            padding: 0.2rem;
+            width: 100%;
+            justify-self: center;
+            font-size: x-large;
+        }
+        #modal > div{
+            padding: 0.2rem;
+        }
+
+        #modal-action{
+            display: none;
+            /* pointer-events: all; */
+        }
+        #modal-action.active{
+            opacity: 1;
+            display: block;
+        }
+        #overlay {
+            position: fixed;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.71);
+            transition: all 1.5s;
+            pointer-events: none;
+        }
+        #overlay.active{
+            opacity: 1;
+        }
+    </style>
+    <title>Modal</title>
+</head>
+
+<body>
+    <button id="open-modal">Open modal</button>
+    <div id="modal">
+        <div id="modal-title">Bot defeated you.  Don't worry 😁 you can try again </div>
+        <div id="moal-image">
+            <img src="./images/try-again-meme.jpg" alt="" style="width: 40vmin;">
+        </div>
+        <div id="Modal-msg">The game will restart in 4 secs</div>
+        <button id="modal-action">Action</button>
+    </div>
+    <div id="overlay"></div>
+</body>
+<script>
+    const opener = document.querySelector("#open-modal");
+    const modal = document.querySelector("#modal");
+    const overlay = document.querySelector("#overlay");
+    opener.addEventListener('click' , () => {
+            overlay.classList.toggle("active");
+            modal.classList.toggle("active");
+            setTimeout(() => {
+                action.classList.toggle("active");
+            }, 4000);
+    })
+
+    const action = document.querySelector("#modal-action");
+    action.addEventListener('click',()=>{
+        console.log('clicked');
+    })
+    
+
+</script>
+
+</html>
