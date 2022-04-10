@@ -8,23 +8,17 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./style.css">
     <script defer src="./script.js"></script>
     <title>TIC TAC TOE BOT</title>
 </head>
 <body class="light">
-    <!-- 
-        set the initial board data to a null array (we store the data of board in array)
-        create a modal representing processing by the cpu AI to move its next move
-        change the data inside modal if the player or cpu wins or game draws use modal by hiding and unhiding it
-
-
-    -->
+   
     <div id="score-bar">
         <div class="score-bar-items" id="player-score">Player's score : </div>
         <div class="score-bar-items" id="bot-score">Bot's score</div>
         <div class="score-bar-items" id="theme">Theme
-            <ul class="score-bar-items" id="theme-dropdown"> 
+            <ul class="score-bar-items has-dropdown" id="theme-dropdown"> 
                 <li class="dropdown-items" id="light">Light</li>
                 <li class="dropdown-items" id="dark">Dark</li>
             </ul>
