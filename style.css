@@ -104,6 +104,19 @@ body {
     background-color: rgba(24, 24, 24, 0.728);
 }
 
+#footer{
+    min-height: 4vw;
+    height: 2.5rem;
+    width: 100%;
+    background-color: gray;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #f8f8f8;
+}
+
 
 /* modal */
 #modal {
@@ -154,6 +167,8 @@ body {
 .hidden {
     visibility: hidden;
 }
+
+
 
 /* Themes */
 /* To generate color themes automatically use --> colors.co */
