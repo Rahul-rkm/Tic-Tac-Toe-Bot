@@ -125,6 +125,7 @@ const botMove = async ()=>{
 const restartGame = async () =>{
     playerScoreEl.innerText = "Player's score : " + score[0];
     botScoreEl.innerText = "Bot's score : " + score[1];
+    turnEl.innerText = (turn === 1) ? "Bot's turn" : "Player's turn";
     boardItems.forEach(el => {
         el.innerHTML = "&nbsp";
     });
