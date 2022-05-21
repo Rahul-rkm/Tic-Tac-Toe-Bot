@@ -190,6 +190,7 @@ boardItems.forEach(el => {
                 actionButton.click();
                 actionButton.style.visibility = "hidden";
                 setTimeout(restartGame, 4000);
+                turn = 0;
                 Draw = false;
                 return;
             }
@@ -201,6 +202,7 @@ boardItems.forEach(el => {
                 actionButton.click();
                 actionButton.style.visibility = "hidden";
                 setTimeout(restartGame, 4000);
+                turn = 0;
                 wonTheGame = false;
                 return;
             }
