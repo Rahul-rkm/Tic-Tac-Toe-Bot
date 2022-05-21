@@ -1,4 +1,6 @@
 
+
+
 // 1. select all elements 
 
 const playerScoreEl = document.querySelector("#player-score"); // "Player's score: "
@@ -13,24 +15,23 @@ const overlay = document.querySelector("#overlay");
 actionButton.addEventListener("click", () => {
     const modal = document.getElementById("modal");
     modal.classList.toggle("hidden");
+    // overlay.classList.toggle("active");
 })
 
 
 // 2. store turn, score , board into variables
 let turn = 0;           // 0 => player , 1 => bot 
 let score = [0, 0];     // [player,bot]
-let board = ['','','','','','','','',''];
+let board = ['', '', '', '', '', '', '', '', ''];
 
 // function to check draw 
-const isDraw = async () =>{
-    for(let i=0;i<9;i++)
-    {
-        if(board[i] === '')
-        {
+const isDraw = async () => {
+    for (let i = 0; i < 9; i++) {
+        if (board[i] === '') {
             return false;
         }
     }
-    return true; 
+    return true;
 }
 
 // FUNCTION to check a player with its letter has won?
@@ -69,7 +70,7 @@ const CPU_MOVE = async (board) => {
             cloneBoard[i] = 'O';
             let wonTheGame = await hasWon('O', cloneBoard);
 
-            if ( wonTheGame === true)
+            if (wonTheGame === true)
                 return i; // actual index
             cloneBoard[i] = '';
         }
@@ -80,41 +81,39 @@ const CPU_MOVE = async (board) => {
             cloneBoard[i] = 'X';
             let wonTheGame = await hasWon('X', cloneBoard);
 
-            if ( wonTheGame === true)
+            if (wonTheGame === true)
                 return i; // actual index
             cloneBoard[i] = '';
         }
     }
-    
+
     // if center is free
     if (cloneBoard[4] === '')
-    return 4; // actual index 
+        return 4; // actual index 
 
     // check corners and return a random one
     let freePlaces = []
-    for(let i=0; i< 4; i++)
-    {
-        if(cloneBoard[ corners[i] - 1] === '')
-            freePlaces.push( corners[i] );
+    for (let i = 0; i < 4; i++) {
+        if (cloneBoard[corners[i] - 1] === '')
+            freePlaces.push(corners[i]);
     }
-    if(freePlaces.length > 0)    
-        return freePlaces[Math.floor( Math.random() * (freePlaces.length) )] - 1; // true index value of board (start form 0)
-        
+    if (freePlaces.length > 0)
+        return freePlaces[Math.floor(Math.random() * (freePlaces.length))] - 1; // true index value of board (start form 0)
+
     // check for mids return a random
-        freePlaces = [];
-        for(let i=0;  i < 4; i++)
-        {
-            if(cloneBoard[ mids[i] - 1 ] === '')
-            freePlaces.push( mids[i] );
-            
-        }
-    if(freePlaces.length > 0)
-        return freePlaces[Math.floor( Math.random() * (freePlaces.length) )] - 1; // true index value of board (start form 0)
+    freePlaces = [];
+    for (let i = 0; i < 4; i++) {
+        if (cloneBoard[mids[i] - 1] === '')
+            freePlaces.push(mids[i]);
+
+    }
+    if (freePlaces.length > 0)
+        return freePlaces[Math.floor(Math.random() * (freePlaces.length))] - 1; // true index value of board (start form 0)
 
 }
 
 // bot's move
-const botMove = async ()=>{
+const botMove = async () => {
     const move = await CPU_MOVE(board);
     const targetId = '#board-item-' + String(move + 1);
     const targetEl = document.querySelector(targetId);
@@ -122,25 +121,25 @@ const botMove = async ()=>{
     targetEl.click();
 }
 
-const restartGame = async () =>{
+const restartGame = async () => {
     playerScoreEl.innerText = "Player's score : " + score[0];
     botScoreEl.innerText = "Bot's score : " + score[1];
-    turnEl.innerText = (turn === 1) ? "Bot's turn" : "Player's turn";
+    turnEl.innerText = (turn) ? "Bot's turn" : "Player's turn";
     boardItems.forEach(el => {
         el.innerHTML = "&nbsp";
     });
-    turn = 0;
-    board = ['','','','','','','','',''];
+    board = ['', '', '', '', '', '', '', '', ''];
     actionButton.click();
-    // if bot has to move first
-    if(turn === 1) await botMove();
+    // overlay.classList.remove('active');
+    // if bot has to move first 
+    if(turn) await botMove() ;
+
 }
 
 // 3. add event listener to each board item and based on turn enter X or O 
 boardItems.forEach(el => {
     el.addEventListener('click', async (e) => {
-        if(e.target.innerText === 'X' || e.target.innerText === 'O')
-        {
+        if (e.target.innerText === 'X' || e.target.innerText === 'O') {
             return;
         }
         if (turn === 0) {
@@ -148,8 +147,7 @@ boardItems.forEach(el => {
             const index = e.target.id.slice(11);
             board[parseInt(index) - 1] = 'X';
             let Draw = await isDraw();
-            if(Draw === true)
-            {
+            if (Draw === true) {
                 modalMsg.innerHTML = "<h1> It's a draw <br> you played well <br>🤜🤛💪 </h1>";
                 actionButton.innerText = "Next Game"
                 actionButton.click();
@@ -159,9 +157,8 @@ boardItems.forEach(el => {
                 Draw = false;
                 return;
             }
-            let wonTheGame = await hasWon('X',board);
-            if(wonTheGame === true)
-            {
+            let wonTheGame = await hasWon('X', board);
+            if (wonTheGame === true) {
                 score[0] += 1;
                 modalMsg.innerHTML = "<h1> Congratualations! <br> You Won <br>🏆🎉✌🌟 </h1>";
                 actionButton.click();
@@ -177,14 +174,13 @@ boardItems.forEach(el => {
             // call the CPU_MOVE function and 
             let bove = await botMove();
 
-        }    
+        }
         else if (turn === 1) {
             e.target.innerText = 'O';
             const index = e.target.id.slice(11);
             board[parseInt(index) - 1] = 'O';
             let Draw = await isDraw();
-            if(Draw === true)
-            {
+            if (Draw === true) {
                 modalMsg.innerHTML = "<h1> It's a draw. You played well 🤜🤛💪 </h1>";
                 actionButton.innerText = "Next Game"
                 actionButton.click();
@@ -194,9 +190,8 @@ boardItems.forEach(el => {
                 Draw = false;
                 return;
             }
-            let wonTheGame = await hasWon('O',board);
-            if(wonTheGame === true)
-            {
+            let wonTheGame = await hasWon('O', board);
+            if (wonTheGame === true) {
                 score[1] += 1;
                 modalMsg.innerHTML = "<h1> BOT has defeated you. Try again 👍👐 <br>You will be able to play game again in 4 sec </h1>";
                 actionButton.click();
@@ -207,6 +202,6 @@ boardItems.forEach(el => {
                 return;
             }
             turn = 0;
-        }    
-    })    
+        }
+    })
 });    
