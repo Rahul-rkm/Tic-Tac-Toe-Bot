@@ -118,11 +118,11 @@ const botMove = async ()=>{
     const move = await CPU_MOVE(board);
     const targetId = '#board-item-' + String(move + 1);
     const targetEl = document.querySelector(targetId);
-    overlay.classList.toggle("active");
+    overlay.classList.remove("active");
     targetEl.click();
 }
 
-const restartGame = () =>{
+const restartGame = async () =>{
     playerScoreEl.innerText = "Player's score : " + score[0];
     botScoreEl.innerText = "Bot's score : " + score[1];
     boardItems.forEach(el => {
@@ -131,6 +131,8 @@ const restartGame = () =>{
     turn = 0;
     board = ['','','','','','','','',''];
     actionButton.click();
+    // if bot has to move first
+    if(turn === 1) await botMove();
 }
 
 // 3. add event listener to each board item and based on turn enter X or O 
