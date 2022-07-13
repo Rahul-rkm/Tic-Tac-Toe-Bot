@@ -28,28 +28,31 @@
             background-color: #fff;
         }
 
-        #modal.active{
-            transform: translate(-50%,-50%) scale(1);
+        #modal.active {
+            transform: translate(-50%, -50%) scale(1);
         }
 
-        #modal-title{
+        #modal-title {
             padding: 0.2rem;
             width: 100%;
             justify-self: center;
             font-size: x-large;
         }
-        #modal > div{
+
+        #modal>div {
             padding: 0.2rem;
         }
 
-        #modal-action{
+        #modal-action {
             display: none;
             /* pointer-events: all; */
         }
-        #modal-action.active{
+
+        #modal-action.active {
             opacity: 1;
             display: block;
         }
+
         #overlay {
             position: fixed;
             opacity: 0;
@@ -61,7 +64,8 @@
             transition: all 1.5s;
             pointer-events: none;
         }
-        #overlay.active{
+
+        #overlay.active {
             opacity: 1;
         }
     </style>
@@ -71,7 +75,7 @@
 <body>
     <button id="open-modal">Open modal</button>
     <div id="modal">
-        <div id="modal-title">Bot defeated you.  Don't worry 😁 you can try again </div>
+        <div id="modal-title">Bot defeated you. Don't worry 😁 you can try again </div>
         <div id="moal-image">
             <img src="./images/try-again-meme.jpg" alt="" style="width: 40vmin;">
         </div>
@@ -84,19 +88,19 @@
     const opener = document.querySelector("#open-modal");
     const modal = document.querySelector("#modal");
     const overlay = document.querySelector("#overlay");
-    opener.addEventListener('click' , () => {
-            overlay.classList.toggle("active");
-            modal.classList.toggle("active");
-            setTimeout(() => {
-                action.classList.toggle("active");
-            }, 4000);
+    opener.addEventListener('click', () => {
+        overlay.classList.toggle("active");
+        modal.classList.toggle("active");
+        setTimeout(() => {
+            action.classList.toggle("active");
+        }, 4000);
     })
 
     const action = document.querySelector("#modal-action");
-    action.addEventListener('click',()=>{
+    action.addEventListener('click', () => {
         console.log('clicked');
     })
-    
+
 
 </script>
 
