@@ -129,7 +129,7 @@ const restartGame = async () => {
     actionButton.click();
     // overlay.classList.remove('active');
     // if bot has to move first 
-    if(turn) await botMove() ;
+    if (turn) await botMove();
 
 }
 
